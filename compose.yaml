@@ -1,0 +1,14 @@
+services:
+  yt-downloader:
+    image: ghcr.io/santerihetekivi/yt-dlp-docker:2026.03.03
+    volumes:
+      - ./home:/data/home
+      - ./temp:/data/temp
+      - ./archive:/data/archive
+    command: [
+      "yt-dlp",
+      "--paths", "temp:/data/temp",
+      "--paths", "home:/data/home",
+      "--download-archive", "/data/archive/archive.txt",
+      "https://www.youtube.com/watch?v=<VIDEO_ID>",
+    ]
